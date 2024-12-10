@@ -1,0 +1,15 @@
+D:\labs\roma\proj\proj 1 A\ProjectA\ProjectA\bin\Debug\net8.0\ProjectA.exe
+D:\labs\roma\proj\proj 1 A\ProjectA\ProjectA\bin\Debug\net8.0\ProjectA.deps.json
+D:\labs\roma\proj\proj 1 A\ProjectA\ProjectA\bin\Debug\net8.0\ProjectA.runtimeconfig.json
+D:\labs\roma\proj\proj 1 A\ProjectA\ProjectA\bin\Debug\net8.0\ProjectA.dll
+D:\labs\roma\proj\proj 1 A\ProjectA\ProjectA\bin\Debug\net8.0\ProjectA.pdb
+D:\labs\roma\proj\proj 1 A\ProjectA\ProjectA\obj\Debug\net8.0\ProjectA.GeneratedMSBuildEditorConfig.editorconfig
+D:\labs\roma\proj\proj 1 A\ProjectA\ProjectA\obj\Debug\net8.0\ProjectA.AssemblyInfoInputs.cache
+D:\labs\roma\proj\proj 1 A\ProjectA\ProjectA\obj\Debug\net8.0\ProjectA.AssemblyInfo.cs
+D:\labs\roma\proj\proj 1 A\ProjectA\ProjectA\obj\Debug\net8.0\ProjectA.csproj.CoreCompileInputs.cache
+D:\labs\roma\proj\proj 1 A\ProjectA\ProjectA\obj\Debug\net8.0\ProjectA.sourcelink.json
+D:\labs\roma\proj\proj 1 A\ProjectA\ProjectA\obj\Debug\net8.0\ProjectA.dll
+D:\labs\roma\proj\proj 1 A\ProjectA\ProjectA\obj\Debug\net8.0\refint\ProjectA.dll
+D:\labs\roma\proj\proj 1 A\ProjectA\ProjectA\obj\Debug\net8.0\ProjectA.pdb
+D:\labs\roma\proj\proj 1 A\ProjectA\ProjectA\obj\Debug\net8.0\ProjectA.genruntimeconfig.cache
+D:\labs\roma\proj\proj 1 A\ProjectA\ProjectA\obj\Debug\net8.0\ref\ProjectA.dll

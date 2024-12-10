@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="LibraryDomain.Order">
+    <Position X="7.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAEAAAAAABAAAAAAgAAAAAAAAAAABAQAAAAAAA=</HashCode>
+      <FileName>Order.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Status" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="LibraryDomain.BaseEntity" Collapsed="true">
+    <Position X="14.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LibraryDomain.Author" Collapsed="true">
+    <Position X="12.25" Y="7.5" Width="1.5" />
+    <AssociationLine Name="Books" Type="LibraryDomain.Book" ManuallyRouted="true">
+      <Path>
+        <Point X="12.625" Y="8.13" />
+        <Point X="12.625" Y="8.347" />
+        <Point X="16.427" Y="8.347" />
+        <Point X="16.427" Y="8" />
+        <Point X="16.75" Y="8" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.29" Y="0.374" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAQAgAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Author.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Books" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="1.215" />
+  </Class>
+  <Class Name="LibraryDomain.Book" Collapsed="true">
+    <Position X="16.75" Y="7.5" Width="1.5" />
+    <AssociationLine Name="Orders" Type="LibraryDomain.Order" ManuallyRouted="true">
+      <Path>
+        <Point X="17.562" Y="8.13" />
+        <Point X="17.562" Y="9.697" />
+        <Point X="8.938" Y="9.697" />
+        <Point X="8.938" Y="9.476" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.736" Y="0.435" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Category" Type="LibraryDomain.Category">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.195" Y="0.053" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Publisher" Type="LibraryDomain.Publisher">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.103" Y="-0.275" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAEAAiAAAAAAAAAACBAAAAAAAAAAACAA=</HashCode>
+      <FileName>Book.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Publisher" />
+      <Property Name="Category" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Orders" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="LibraryDomain.Reader">
+    <Position X="21.25" Y="7.5" Width="1.5" />
+    <AssociationLine Name="Orders" Type="LibraryDomain.Order" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="22" Y="9.148" />
+        <Point X="22" Y="10.552" />
+        <Point X="8" Y="10.552" />
+        <Point X="8" Y="9.476" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.181" Y="0.235" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAQAIAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Reader.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Orders" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="LibraryDomain.LibraryBranch">
+    <Position X="10" Y="7.5" Width="1.5" />
+    <AssociationLine Name="AvailableBooks" Type="LibraryDomain.Book">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.064" Y="0.395" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACICAAQAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>LibraryBranch.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="AvailableBooks" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="1.166" />
+  </Class>
+  <Class Name="LibraryDomain.Category" Collapsed="true">
+    <Position X="14.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAACAAAAQAgAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Category.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="1.109" />
+  </Class>
+  <Class Name="LibraryDomain.Publisher" Collapsed="true">
+    <Position X="19.25" Y="7.5" Width="1.5" />
+    <AssociationLine Name="Books" Type="LibraryDomain.Book">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.174" Y="0.195" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAQAgAAAAAACAAAEAAAAAAA=</HashCode>
+      <FileName>Publisher.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Books" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.961" />
+  </Class>
+  <Interface Name="LibraryDomain.IEntity" Collapsed="true">
+    <Position X="23.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="LibraryDomain.INamedEntity" Collapsed="true">
+    <Position X="25.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>INamedEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="LibraryDomain.OrderStatus" Collapsed="true">
+    <Position X="5.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAgAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>OrderStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>
