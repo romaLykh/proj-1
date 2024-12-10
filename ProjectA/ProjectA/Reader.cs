@@ -7,12 +7,31 @@
 
         public Order CreateOrder(Book book)
         {
-            throw new NotImplementedException();
+
+            var order = new Order
+            {
+                Id = Random.Shared.Next(300),
+                Reader = this,
+                Book = book,
+                OrderDate = DateTime.Now,
+                Status = OrderStatus.Pending,
+            };
+
+            Orders.Add(order);
+            return order;
         }
 
         public bool CancelOrder(Order order)
         {
-            throw new NotImplementedException();
+
+            if (Orders.Contains(order))
+            {
+                var orderToCancel = Orders.Find(o => o.Id == order.Id);
+                orderToCancel.CancelOrder();
+
+                return true;
+            }
+            return false;
         }
     }
 }

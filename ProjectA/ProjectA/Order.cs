@@ -11,12 +11,12 @@
 
         public void ApproveOrder()
         {
-            throw new NotImplementedException();
+            Status = OrderStatus.Completed;
         }
 
         public void CancelOrder()
         {
-            throw new NotImplementedException();
+            Status = OrderStatus.Canceled;
         }
     }
 }

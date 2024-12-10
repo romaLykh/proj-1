@@ -14,7 +14,7 @@ public sealed class ReaderTests
     {
         _reader = new Reader { FullName = "John Doe" };
         _book = new Book { Title = "Test Book" };
-        _order = new Order { Book = _book, Reader = _reader, OrderDate = DateTime.Now, Status = OrderStatus.Pending };
+        _order = new Order { Id = Random.Shared.Next(300), Book = _book, Reader = _reader, OrderDate = DateTime.Now, Status = OrderStatus.Pending };
     }
 
     [TestMethod]
@@ -32,8 +32,11 @@ public sealed class ReaderTests
     [TestMethod]
     public void CancelOrder_ShouldReturnTrue_WhenOrderIsCanceled()
     {
+        // Arrange
+        var createdOrder = _reader.CreateOrder(_book);
+
         // Act
-        var result = _reader.CancelOrder(_order);
+        var result = _reader.CancelOrder(createdOrder);
 
         // Assert
         Assert.IsTrue(result);

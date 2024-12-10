@@ -10,10 +10,10 @@
       <Property Name="Status" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="LibraryDomain.BaseEntity" Collapsed="true">
-    <Position X="14.5" Y="6.25" Width="1.5" />
+  <Class Name="LibraryDomain.BaseEntity">
+    <Position X="14.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>BaseEntity.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -23,13 +23,11 @@
     <AssociationLine Name="Books" Type="LibraryDomain.Book" ManuallyRouted="true">
       <Path>
         <Point X="12.625" Y="8.13" />
-        <Point X="12.625" Y="8.347" />
-        <Point X="16.427" Y="8.347" />
-        <Point X="16.427" Y="8" />
-        <Point X="16.75" Y="8" />
+        <Point X="12.625" Y="8.25" />
+        <Point X="16.75" Y="8.25" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-0.29" Y="0.374" />
+        <Position X="0.3" Y="-0.201" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
@@ -42,10 +40,20 @@
     <Lollipop Position="1.215" />
   </Class>
   <Class Name="LibraryDomain.Book" Collapsed="true">
-    <Position X="16.75" Y="7.5" Width="1.5" />
+    <Position X="16.75" Y="7.75" Width="1.5" />
+    <AssociationLine Name="Publisher" Type="LibraryDomain.Publisher">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.117" Y="-0.426" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Category" Type="LibraryDomain.Category">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.252" Y="0.084" />
+      </MemberNameLabel>
+    </AssociationLine>
     <AssociationLine Name="Orders" Type="LibraryDomain.Order" ManuallyRouted="true">
       <Path>
-        <Point X="17.562" Y="8.13" />
+        <Point X="17.562" Y="8.38" />
         <Point X="17.562" Y="9.697" />
         <Point X="8.938" Y="9.697" />
         <Point X="8.938" Y="9.476" />
@@ -54,18 +62,8 @@
         <Position X="-0.736" Y="0.435" />
       </MemberNameLabel>
     </AssociationLine>
-    <AssociationLine Name="Category" Type="LibraryDomain.Category">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.195" Y="0.053" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <AssociationLine Name="Publisher" Type="LibraryDomain.Publisher">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.103" Y="-0.275" />
-      </MemberNameLabel>
-    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAEAAiAAAAAAAAAACBAAAAAAAAAAACAA=</HashCode>
+      <HashCode>AAEAAAAAAAAAAEAAiAAAAAAAAAACBAAAAAAAAAAACBA=</HashCode>
       <FileName>Book.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -75,6 +73,7 @@
     <ShowAsCollectionAssociation>
       <Property Name="Orders" />
     </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="LibraryDomain.Reader">
     <Position X="21.25" Y="7.5" Width="1.5" />
@@ -101,7 +100,7 @@
     <Position X="10" Y="7.5" Width="1.5" />
     <AssociationLine Name="AvailableBooks" Type="LibraryDomain.Book">
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.064" Y="0.395" />
+        <Position X="0.078" Y="0.292" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
@@ -111,15 +110,15 @@
     <ShowAsCollectionAssociation>
       <Property Name="AvailableBooks" />
     </ShowAsCollectionAssociation>
-    <Lollipop Position="1.166" />
+    <Lollipop Position="1.031" />
   </Class>
   <Class Name="LibraryDomain.Category" Collapsed="true">
     <Position X="14.25" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAAACAAAAQAgAAAAAAAAAAEAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAgAAQAACAAAAQAgAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Category.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="1.109" />
+    <Lollipop Position="0.933" />
   </Class>
   <Class Name="LibraryDomain.Publisher" Collapsed="true">
     <Position X="19.25" Y="7.5" Width="1.5" />
@@ -138,14 +137,14 @@
     <Lollipop Position="0.961" />
   </Class>
   <Interface Name="LibraryDomain.IEntity" Collapsed="true">
-    <Position X="23.75" Y="6.25" Width="1.5" />
+    <Position X="17.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IEntity.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="LibraryDomain.INamedEntity" Collapsed="true">
-    <Position X="25.5" Y="6.25" Width="1.5" />
+    <Position X="19.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>INamedEntity.cs</FileName>

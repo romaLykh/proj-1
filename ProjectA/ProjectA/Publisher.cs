@@ -8,12 +8,12 @@
 
         public void AddBook(Book book)
         {
-            throw new NotImplementedException();
+            Books.Add(book);
         }
 
         public bool RemoveBook(Book book)
         {
-            throw new NotImplementedException();
+            return Books.Remove(book);
         }
     }
 }

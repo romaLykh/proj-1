@@ -5,37 +5,46 @@ namespace Library.Tests;
 [TestClass]
 public sealed class CategoryTests
 {
-    private Category _category;
-    private Book _book;
+    private Category _category1;
+    private Category _category2;
 
     [TestInitialize]
     public void Setup()
     {
-        _category = new Category { Name = "Test Category" };
-        _book = new Book { Title = "Test Book" };
+        _category1 = new Category { Name = "Category A" };
+        _category2 = new Category { Name = "Category B" };
     }
 
     [TestMethod]
-    public void AddBook_ShouldAddBookToCategory()
+    public void CompareTo_ShouldReturnNegative_WhenFirstCategoryIsLessThanSecond()
     {
         // Act
-        _category.AddBook(_book);
+        var result = _category1.CompareTo(_category2);
 
         // Assert
-        Assert.IsTrue(_category.Books.Contains(_book));
+        Assert.IsTrue(result < 0);
     }
 
     [TestMethod]
-    public void RemoveBook_ShouldReturnTrue_WhenBookIsRemoved()
+    public void CompareTo_ShouldReturnPositive_WhenFirstCategoryIsGreaterThanSecond()
+    {
+        // Act
+        var result = _category2.CompareTo(_category1);
+
+        // Assert
+        Assert.IsTrue(result > 0);
+    }
+
+    [TestMethod]
+    public void CompareTo_ShouldReturnZero_WhenCategoriesAreEqual()
     {
         // Arrange
-        _category.Books.Add(_book);
+        var category3 = new Category { Name = "Category A" };
 
         // Act
-        var result = _category.RemoveBook(_book);
+        var result = _category1.CompareTo(category3);
 
         // Assert
-        Assert.IsTrue(result);
-        Assert.IsFalse(_category.Books.Contains(_book));
+        Assert.AreEqual(0, result);
     }
 }

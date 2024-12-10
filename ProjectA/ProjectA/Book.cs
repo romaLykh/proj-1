@@ -1,6 +1,6 @@
 ﻿namespace LibraryDomain
 {
-    public class Book : BaseEntity
+    public class Book : BaseEntity, ICloneable
     {
         public string Title { get; set; }
         public Author Author { get; set; }
@@ -10,12 +10,24 @@
 
         public void UpdateTitle(string newTitle)
         {
-            throw new NotImplementedException();
+            Title = newTitle;
         }
 
         public void AssignCategory(Category category)
         {
-            throw new NotImplementedException();
+            Category = category;
+        }
+
+        public object Clone()
+        {
+            return new Book
+            {
+                Title = Title,
+                Author = Author,
+                Publisher = Publisher,
+                Category = Category,
+                Orders = new List<Order>(Orders)
+            };
         }
     }
 }

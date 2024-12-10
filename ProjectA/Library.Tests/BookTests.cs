@@ -34,4 +34,18 @@ public sealed class BookTests
         // Assert
         Assert.AreEqual(_category, _book.Category);
     }
+
+    [TestMethod]
+    public void Clone_ShouldReturnExactCopyOfBook()
+    {
+        // Act
+        var clonedBook = (Book)_book.Clone();
+
+        // Assert
+        Assert.AreEqual(_book.Title, clonedBook.Title);
+        Assert.AreEqual(_book.Author, clonedBook.Author);
+        Assert.AreEqual(_book.Publisher, clonedBook.Publisher);
+        Assert.AreEqual(_book.Category, clonedBook.Category);
+        CollectionAssert.AreEqual(_book.Orders, clonedBook.Orders);
+    }
 }

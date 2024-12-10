@@ -1,6 +1,6 @@
 ﻿namespace LibraryDomain
 {
-    public class Category : BaseEntity, INamedEntity
+public class Category : BaseEntity, INamedEntity, IComparable<Category>
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -8,12 +8,18 @@
 
         public void AddBook(Book book)
         {
-            throw new NotImplementedException();
+            Books.Add(book);
         }
 
         public bool RemoveBook(Book book)
         {
-            throw new NotImplementedException();
+            return Books.Remove(book);
+        }
+
+        public int CompareTo(Category other)
+        {
+            if (other == null) return 1;
+            return string.Compare(Name, other.Name, StringComparison.Ordinal);
         }
     }
 }
