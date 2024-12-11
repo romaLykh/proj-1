@@ -29,7 +29,7 @@ public sealed class BookTests
     public void AssignCategory_ShouldChangeBookCategory()
     {
         // Act
-        _book.AssignCategory(_category);
+        _book.ChangeCategory(_category);
 
         // Assert
         Assert.AreEqual(_category, _book.Category);
@@ -46,6 +46,5 @@ public sealed class BookTests
         Assert.AreEqual(_book.Author, clonedBook.Author);
         Assert.AreEqual(_book.Publisher, clonedBook.Publisher);
         Assert.AreEqual(_book.Category, clonedBook.Category);
-        CollectionAssert.AreEqual(_book.Orders, clonedBook.Orders);
     }
 }

@@ -5,13 +5,13 @@ namespace Library.Tests;
 [TestClass]
 public sealed class LibraryBranchTests
 {
-    private LibraryBranch _libraryBranch;
+    private LibraryDomain.Library _libraryBranch;
     private Book _book;
 
     [TestInitialize]
     public void Setup()
     {
-        _libraryBranch = new LibraryBranch { Name = "Main Branch", Location = "123 Library St." };
+        _libraryBranch = new LibraryDomain.Library();
         _book = new Book { Title = "Test Book" };
     }
 

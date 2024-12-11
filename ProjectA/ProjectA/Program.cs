@@ -4,29 +4,37 @@ namespace ProjectA;
 
 public class Program
 {
-    private static LibraryBranch _libraryBranch = new LibraryBranch { Name = "Городская", Location = "Книжная 12" };
+    private static Library _libraryBranch = new Library();
     private static List<Author> _authors = new List<Author>();
     private static List<Category> _categories = new List<Category>();
     private static List<Reader> _readers = new List<Reader>();
 
+    // приклад власного делегату
+    // для обробки замовлень
+    public delegate void OrderHandler(Order order);
+
     private static void Main(string[] args)
     {
+        // Action делегат для виведення повідомлень
+        Action<string> displayMessage = (message) => Console.WriteLine(message);
+
+        _libraryBranch.BookAdded += OnBookAdded;
+
         while (true)
         {
-            Console.WriteLine("Меню:");
-            Console.WriteLine("1. Показать книги в библиотеке");
-            Console.WriteLine("2. Добавить книгу в библиотеку");
-            Console.WriteLine("3. Удалить книгу из библиотеки");
-            Console.WriteLine("4. Обновить название книги");
-            Console.WriteLine("5. Назначить категорию книге");
-            Console.WriteLine("6. Клонировать книгу");
-            Console.WriteLine("7. Одобрить заказ");
-            Console.WriteLine("8. Отменить заказ");
-            Console.WriteLine("9. Создать заказ для читателя");
-            Console.WriteLine("10. Отменить заказ для читателя");
-            Console.WriteLine("11. Показать все заказы и связанных с ними читателей");
-            Console.WriteLine("12. Выйти");
-            Console.Write("Выберите опцию: ");
+            displayMessage("Меню:");
+            displayMessage("1. Показать книги в библиотеке");
+            displayMessage("2. Добавить книгу в библиотеку");
+            displayMessage("3. Удалить книгу из библиотеки");
+            displayMessage("4. Обновить название книги");
+            displayMessage("5. Назначить категорию книге");
+            displayMessage("6. Клонировать книгу");
+            displayMessage("7. Одобрить заказ");
+            displayMessage("8. Отменить заказ");
+            displayMessage("9. Создать заказ для читателя");
+            displayMessage("10. Показать все заказы и связанных с ними читателей");
+            displayMessage("11. Выйти");
+            Console.Write("Выберите опцию: \n");
 
             var input = Console.ReadLine();
             switch (input)
@@ -59,15 +67,12 @@ public class Program
                     CreateOrderForReader();
                     break;
                 case "10":
-                    CancelOrderForReader();
-                    break;
-                case "11":
                     ShowAllOrders();
                     break;
-                case "12":
+                case "11":
                     return;
                 default:
-                    Console.WriteLine("Неверный выбор, попробуйте снова.");
+                    displayMessage("Неверный выбор, попробуйте снова.\n");
                     break;
             }
         }
@@ -91,15 +96,15 @@ public class Program
 
     private static void AddBook()
     {
-        Console.Write("Введите название книги: ");
+        Console.Write("\nВведите название книги: \n");
         var title = Console.ReadLine();
 
-        Console.WriteLine("Доступные авторы:");
+        Console.WriteLine("\nДоступные авторы:\n");
         for (int i = 0; i < _authors.Count; i++)
         {
             Console.WriteLine($"{i + 1}. {_authors[i].Name}");
         }
-        Console.Write("Выберите автора (введите номер) или введите новое имя автора: ");
+        Console.Write("\nВыберите автора (введите номер) или введите новое имя автора: \n");
         var authorInput = Console.ReadLine();
         Author author;
         if (int.TryParse(authorInput, out int authorIndex) && authorIndex > 0 && authorIndex <= _authors.Count)
@@ -112,12 +117,12 @@ public class Program
             _authors.Add(author);
         }
 
-        Console.WriteLine("Доступные категории:");
+        Console.WriteLine("\nДоступные категории:");
         for (int i = 0; i < _categories.Count; i++)
         {
             Console.WriteLine($"{i + 1}. {_categories[i].Name}");
         }
-        Console.Write("Выберите категорию (введите номер) или введите новое имя категории: ");
+        Console.Write("\nВыберите категорию (введите номер) или введите новое имя категории: ");
         var categoryInput = Console.ReadLine();
         Category category;
         if (int.TryParse(categoryInput, out int categoryIndex) && categoryIndex > 0 && categoryIndex <= _categories.Count)
@@ -130,74 +135,78 @@ public class Program
             _categories.Add(category);
         }
 
-        Console.Write("Введите название издателя: ");
+        Console.Write("\nВведите название издателя: ");
         var publisherName = Console.ReadLine();
         var publisher = new Publisher { Name = publisherName };
 
         var book = new Book { Title = title, Author = author, Publisher = publisher, Category = category };
 
         _libraryBranch.AddBook(book);
-        Console.WriteLine("Книга добавлена в библиотеку.");
+        Console.WriteLine("\nКнига добавлена в библиотеку.");
     }
 
     private static void RemoveBook()
     {
-        Console.Write("Введите название книги для удаления: ");
+        Console.Write("\nВведите название книги для удаления: ");
         var title = Console.ReadLine();
-        var book = _libraryBranch.AvailableBooks.FirstOrDefault(b => b.Title == title);
+
+        // Predicate для пошуку книги по назві
+        Predicate<Book> findBookByTitle = b => b.Title == title;
+
+        var book = _libraryBranch.AvailableBooks.Find(findBookByTitle);
 
         if (book != null && _libraryBranch.RemoveBook(book))
         {
-            Console.WriteLine("Книга удалена из библиотеки.");
+            Console.WriteLine("\nКнига удалена из библиотеки.");
         }
         else
         {
-            Console.WriteLine("Книга не найдена в библиотеке.");
+            Console.WriteLine("\nКнига не найдена в библиотеке.");
         }
     }
 
     private static void UpdateBookTitle()
     {
-        Console.Write("Введите текущее название книги: ");
+        Console.Write("\nВведите текущее название книги: ");
         var currentTitle = Console.ReadLine();
         var book = _libraryBranch.AvailableBooks.FirstOrDefault(b => b.Title == currentTitle);
 
         if (book != null)
         {
-            Console.Write("Введите новое название книги: ");
+            Console.Write("\nВведите новое название книги: ");
             var newTitle = Console.ReadLine();
             book.UpdateTitle(newTitle);
-            Console.WriteLine("Название книги обновлено.");
+            Console.WriteLine("\nНазвание книги обновлено.");
         }
         else
         {
-            Console.WriteLine("Книга не найдена в библиотеке.");
+            Console.WriteLine("\nКнига не найдена в библиотеке.");
         }
     }
 
     private static void AssignCategoryToBook()
     {
-        Console.Write("Введите название книги: ");
+        Console.Write("\nВведите название книги: ");
         var title = Console.ReadLine();
         var book = _libraryBranch.AvailableBooks.FirstOrDefault(b => b.Title == title);
 
         if (book != null)
         {
-            Console.Write("Введите новую категорию книги: ");
+            Console.Write("\nВведите новую категорию книги: ");
             var categoryName = Console.ReadLine();
             var category = new Category { Name = categoryName };
-            book.AssignCategory(category);
-            Console.WriteLine("Категория назначена книге.");
+            book.ChangeCategory(category);
+            Console.WriteLine("\nКатегория назначена книге.");
         }
         else
         {
-            Console.WriteLine("Книга не найдена в библиотеке.");
+            Console.WriteLine("\nКнига не найдена в библиотеке.");
         }
     }
 
     private static void CloneBook()
     {
-        Console.Write("Введите название книги для клонирования: ");
+        Console.Write("\nВведите название книги для клонирования: ");
         var title = Console.ReadLine();
         var book = _libraryBranch.AvailableBooks.FirstOrDefault(b => b.Title == title);
 
@@ -205,21 +214,21 @@ public class Program
         {
             var clonedBook = (Book)book.Clone();
             _libraryBranch.AddBook(clonedBook);
-            Console.WriteLine($"Книга клонирована: {clonedBook.Title}");
+            Console.WriteLine($"\nКнига клонирована: {clonedBook.Title}");
         }
         else
         {
-            Console.WriteLine("Книга не найдена в библиотеке.");
+            Console.WriteLine("\nКнига не найдена в библиотеке.");
         }
     }
 
     private static void ApproveOrder()
     {
-        Console.Write("Введите номер заказа: ");
+        Console.Write("\nВведите номер заказа: ");
         int id;
         while (!int.TryParse(Console.ReadLine(), out id))
         {
-            Console.WriteLine("Неверный номер заказа, попробуйте снова.");
+            Console.WriteLine("\nНеверный номер заказа, попробуйте снова.");
         }
 
         var orders = _readers.SelectMany(r => r.Orders).ToList();
@@ -228,45 +237,54 @@ public class Program
 
         if (order != null)
         {
-            order.ApproveOrder();
-            Console.WriteLine("Заказ одобрен.");
+            // 1 приклад використання власного делегату
+            OrderHandler approveOrderHandler = (o) => o.ApproveOrder();
+
+            approveOrderHandler(order);
+
+            Console.WriteLine("\nЗаказ одобрен.");
         }
         else
         {
-            Console.WriteLine("Заказ не найден.");
+            Console.WriteLine("\nЗаказ не найден.");
         }
     }
 
     private static void CancelOrder()
     {
-        Console.Write("Введите номер заказа: ");
+        Console.Write("\nВведите номер заказа: ");
         int id;
         while (!int.TryParse(Console.ReadLine(), out id))
         {
-            Console.WriteLine("Неверный номер заказа, попробуйте снова.");
+            Console.WriteLine("\nНеверный номер заказа, попробуйте снова.");
         }
         var orders = _readers.SelectMany(r => r.Orders).ToList();
         var order = orders.Find(o => o.Id == id);
 
         if (order != null)
         {
-            order.CancelOrder();
-            Console.WriteLine("Заказ отменен.");
+            // 2 приклад використання власного делегату
+
+            OrderHandler cancelOrderHandler = (o) => o.CancelOrder();
+
+            cancelOrderHandler(order);
+
+            Console.WriteLine("\nЗаказ отменен.");
         }
         else
         {
-            Console.WriteLine("Заказ не найден.");
+            Console.WriteLine("\nЗаказ не найден.");
         }
     }
 
     private static void CreateOrderForReader()
     {
-        Console.WriteLine("Доступные читатели:");
+        Console.WriteLine("\nДоступные читатели:");
         for (int i = 0; i < _readers.Count; i++)
         {
             Console.WriteLine($"{i + 1}. {_readers[i].FullName}");
         }
-        Console.Write("Выберите читателя (введите номер) или введите новое имя читателя: ");
+        Console.Write("\nВыберите читателя (введите номер) или введите новое имя читателя: ");
         var readerInput = Console.ReadLine();
         Reader reader;
         if (int.TryParse(readerInput, out int readerIndex) && readerIndex > 0 && readerIndex <= _readers.Count)
@@ -279,63 +297,28 @@ public class Program
             _readers.Add(reader);
         }
 
-        Console.Write("Введите название книги для заказа: ");
+        Console.Write("\nВведите название книги для заказа: ");
         var title = Console.ReadLine();
         var book = _libraryBranch.AvailableBooks.FirstOrDefault(b => b.Title == title);
 
         if (book != null)
         {
             var order = reader.CreateOrder(book);
-            Console.WriteLine($"Заказ создан: {order.Id}");
-        }
-        else
-        {
-            Console.WriteLine("Книга не найдена в библиотеке.");
-        }
-    }
 
-    private static void CancelOrderForReader()
-    {
-        Console.WriteLine("Доступные читатели:");
-        for (int i = 0; i < _readers.Count; i++)
-        {
-            Console.WriteLine($"{i + 1}. {_readers[i].FullName}");
-        }
-        Console.Write("Выберите читателя (введите номер) или введите новое имя читателя: ");
-        var readerInput = Console.ReadLine();
-        Reader reader;
-        if (int.TryParse(readerInput, out int readerIndex) && readerIndex > 0 && readerIndex <= _readers.Count)
-        {
-            reader = _readers[readerIndex - 1];
-        }
-        else
-        {
-            Console.WriteLine("Читатель не найден.");
-            return;
-        }
+            order.OrderApproved += OnOrderApproved;
+            order.OrderCanceled += OnOrderCancelled;
 
-        Console.Write("Введите ID заказа для отмены: ");
-        if (int.TryParse(Console.ReadLine(), out int orderId))
-        {
-            var order = reader.Orders.FirstOrDefault(o => o.Id == orderId);
-            if (order != null && reader.CancelOrder(order))
-            {
-                Console.WriteLine("Заказ отменен.");
-            }
-            else
-            {
-                Console.WriteLine("Заказ не найден.");
-            }
+            Console.WriteLine($"\nЗаказ создан: {order.Id}");
         }
         else
         {
-            Console.WriteLine("Неверный ID заказа.");
+            Console.WriteLine("\nКнига не найдена в библиотеке.");
         }
     }
 
     private static void ShowAllOrders()
     {
-        Console.WriteLine("Все заказы и связанные с ними читатели:");
+        Console.WriteLine("\nВсе заказы и связанные с ними читатели:");
         foreach (var reader in _readers)
         {
             foreach (var order in reader.Orders)
@@ -343,5 +326,20 @@ public class Program
                 Console.WriteLine($"Заказ ID: {order.Id}, Книга: {order.Book.Title}, Читатель: {reader.FullName}, Статус: {order.Status}");
             }
         }
+    }
+
+    public static void OnBookAdded(object sender, Book book)
+    {
+        Console.WriteLine($"\nКнига добавлена: {book.Title}");
+    }
+
+    public static void OnOrderApproved(object sender, int orderId)
+    {
+        Console.WriteLine($"\nЗаказ {orderId} подтвержден");
+    }
+
+    public static void OnOrderCancelled(object sender, int orderId)
+    {
+        Console.WriteLine($"\nЗаказ {orderId} отменен");
     }
 }

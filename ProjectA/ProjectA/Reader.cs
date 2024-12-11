@@ -5,9 +5,10 @@
         public string FullName { get; set; }
         public List<Order> Orders { get; set; } = new List<Order>();
 
+        public event EventHandler<int> OrderAdded;
+
         public Order CreateOrder(Book book)
         {
-
             var order = new Order
             {
                 Id = Random.Shared.Next(300),
@@ -18,6 +19,7 @@
             };
 
             Orders.Add(order);
+            OrderAdded?.Invoke(this, order.Id);
             return order;
         }
 

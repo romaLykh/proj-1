@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Library.Tests.AuthorTests">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <AssociationLine Name="_author" Type="LibraryDomain.Author">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.06" Y="0.441" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAACBCAAQAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AuthorTests.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_author" />
+      <Field Name="_book" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Library.Tests.BookTests">
+    <Position X="4.5" Y="4.75" Width="1.5" />
+    <AssociationLine Name="_book" Type="LibraryDomain.Book" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6" Y="5.487" />
+        <Point X="6.375" Y="5.487" />
+        <Point X="6.375" Y="8.438" />
+        <Point X="7.5" Y="8.438" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAACEDAAABAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>BookTests.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_book" />
+      <Field Name="_category" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Library.Tests.CategoryTests">
+    <Position X="4.5" Y="0.75" Width="1.5" />
+    <AssociationLine Name="_category1" Type="LibraryDomain.Category" FixedFromPoint="true">
+      <Path>
+        <Point X="4.688" Y="2.224" />
+        <Point X="4.688" Y="3.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.088" Y="0.524" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="_category2" Type="LibraryDomain.Category" FixedFromPoint="true">
+      <Path>
+        <Point X="4.875" Y="2.224" />
+        <Point X="4.875" Y="3.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.285" Y="0.727" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>IAEAAAAACAAAAAAAAAgABAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>CategoryTests.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_category1" />
+      <Field Name="_category2" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Library.Tests.LibraryBranchTests">
+    <Position X="7.5" Y="9.75" Width="1.5" />
+    <AssociationLine Name="_libraryBranch" Type="LibraryDomain.Library">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.066" Y="0.259" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAACACAAAAAgCAAAAAAAAAAQABAQAAAAAAAAAAAA=</HashCode>
+      <FileName>LibraryBranchTests.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_book" />
+      <Field Name="_libraryBranch" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Library.Tests.OrderTests">
+    <Position X="1.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACCAAAACAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OrderTests.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_order" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Library.Tests.PublisherTests">
+    <Position X="10.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAACACAAAAAAAAQAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PublisherTests.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_book" />
+      <Field Name="_publisher" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Library.Tests.ReaderTests">
+    <Position X="4.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIEAAACCCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>ReaderTests.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_book" />
+      <Field Name="_order" />
+      <Field Name="_reader" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="LibraryDomain.Book" Collapsed="true">
+    <Position X="7.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LibraryDomain.Category" Collapsed="true">
+    <Position X="4.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="1.212" />
+  </Class>
+  <Class Name="LibraryDomain.Publisher" Collapsed="true">
+    <Position X="10.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LibraryDomain.Order" Collapsed="true">
+    <Position X="1.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LibraryDomain.Reader" Collapsed="true">
+    <Position X="4.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LibraryDomain.Library" Collapsed="true">
+    <Position X="7.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="1.147" />
+  </Class>
+  <Class Name="LibraryDomain.Author" Collapsed="true">
+    <Position X="7.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="1.09" />
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

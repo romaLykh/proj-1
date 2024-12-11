@@ -1,16 +1,18 @@
 ﻿namespace LibraryDomain
 {
-    public class LibraryBranch : BaseEntity, INamedEntity
+    public class Library : BaseEntity, INamedEntity
     {
-        public string Name { get; set; }
-        public string Location { get; set; }
+        public event EventHandler<Book> BookAdded;
+
         public List<Book> AvailableBooks { get; set; } = new List<Book>();
+        public string Name { get; set; }
 
         public void AddBook(Book book)
         {
             if (book != null && !AvailableBooks.Contains(book))
             {
                 AvailableBooks.Add(book);
+                BookAdded?.Invoke(this, book);
             }
         }
 
